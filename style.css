@@ -1,0 +1,230 @@
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --bg: #f1f5f9;
+    --text: #1e293b;
+    --white: #ffffff;
+    --accent: #ef4444;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--dark);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Roadmap Flow */
+.roadmap-container {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.phase-tag {
+    background: #334155;
+    color: #f8fafc;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 40px 0 25px 0;
+    display: inline-block;
+}
+
+.flow-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flow-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #cbd5e1;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.node {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.node-box {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: 600;
+    min-width: 240px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.node-box:hover {
+    background: #eff6ff;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* UPDATED: Centered Modal Details Panel */
+#details-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    /* This creates the dim background effect */
+    box-shadow: 0 0 0 100vw rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.2);
+    border-top: 6px solid var(--primary);
+    display: none;
+    z-index: 9999;
+    text-align: center;
+}
+
+#panel-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+#panel-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-back { background: var(--accent); color: white; }
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --bg: #f1f5f9;
+    --text: #1e293b;
+    --white: #ffffff;
+    --accent: #ef4444;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+}
+
+/* LOGIN PAGE - Bigger & Centered Card */
+.login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #1e293b, #0f172a);
+}
+
+.login-card {
+    background: white;
+    padding: 4rem; /* Increased padding */
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 500px; /* Increased width from 400px */
+}
+
+.login-card h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+.login-card input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+
+/* DASHBOARD GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.roadmap-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+}
+
+/* BUTTONS */
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: 1.5rem;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-back { background: var(--accent); color: white; }
+
+/* NAVBAR */
+.navbar {
+    background: var(--dark);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}

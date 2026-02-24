@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap View</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div style="font-weight: 800;">ROADMAP VIEW</div>
+        <button class="btn btn-back" onclick="window.location.href='dashboard.html'">← Back</button>
+    </nav>
+
+    <div class="roadmap-container" style="text-align: center;">
+        <h1 id="roadmap-title">Loading Roadmap...</h1>
+        <div id="roadmap-render-area"></div>
+    </div>
+
+    <div id="details-panel">
+        <h3 id="panel-title" style="margin-top: 0; color: var(--primary);"></h3>
+        <p id="panel-desc"></p>
+        <button class="btn btn-primary" style="width: 100%;" onclick="this.parentElement.style.display='none'">Got it!</button>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const topic = params.get('topic') || 'SQL';
+        document.getElementById('roadmap-title').innerText = topic + " Roadmap 2026";
+
+        const fullData = {
+            'SQL': {
+                'Phase 1: Beginner': [
+                    { t: 'Basic Syntax', d: 'Master SELECT, FROM, and basic column aliasing.' },
+                    { t: 'Filtering', d: 'Using WHERE, AND, OR, and BETWEEN to isolate data.' },
+                    { t: 'CRUD Operations', d: 'INSERT, UPDATE, and DELETE logic for data management.' }
+                ],
+                'Phase 2: Intermediate': [
+                    { t: 'Table Joins', d: 'Inner, Left, Right, and Full Outer Joins.' },
+                    { t: 'Aggregations', d: 'GROUP BY, HAVING, and functions like COUNT/SUM/AVG.' },
+                    { t: 'Constraints', d: 'Primary Keys, Foreign Keys, and Unique constraints.' }
+                ],
+                'Phase 3: Advanced': [
+                    { t: 'Window Functions', d: 'RANK, DENSE_RANK, and Lead/Lag operations.' },
+                    { t: 'CTE & Subqueries', d: 'With clauses and nested query structures.' },
+                    { t: 'Query Optimization', d: 'Indexes and execution plan analysis.' }
+                ]
+            },
+            'Python': {
+                'Phase 1: Basics': [
+                    { t: 'Variable Types', d: 'Strings, Integers, Floats, and Booleans.' },
+                    { t: 'Data Structures', d: 'Lists, Tuples, Sets, and Dictionaries.' },
+                    { t: 'Control Flow', d: 'If-Else statements and For/While loops.' }
+                ],
+                'Phase 2: Pandas': [
+                    { t: 'DataFrame Intro', d: 'Loading CSVs and viewing data structures.' },
+                    { t: 'Data Manipulation', d: 'Filtering rows and selecting specific columns.' }
+                ],
+                'Phase 3: Data Analysis': [
+                    { t: 'NumPy Arrays', d: 'Mathematical operations on large numerical arrays.' },
+                    { t: 'Visualization', d: 'Plotting with Matplotlib and Seaborn.' }
+                ]
+            },
+            'Git': {
+                'Phase 1: Beginner': [
+                    { t: 'Git Basics', d: 'Understanding version control and installing Git.' },
+                    { t: 'Config & Init', d: 'Setting up user identity and initializing repositories.' },
+                    { t: 'Staging & Commits', d: 'Using git add and git commit to save progress.' }
+                ],
+                'Phase 2: Intermediate': [
+                    { t: 'Branching', d: 'Creating, merging, and deleting branches.' },
+                    { t: 'Remotes', d: 'Connecting to GitHub and pushing/pulling code.' },
+                    { t: 'Merge Conflicts', d: 'How to identify and resolve code overlaps.' }
+                ],
+                'Phase 3: Advanced': [
+                    { t: 'Git Rebase', d: 'Cleaning history and keeping branches up to date.' },
+                    { t: 'GitHub Actions', d: 'Introduction to automation and CI/CD pipelines.' },
+                    { t: 'Stashing & Resetting', d: 'Temporary storage and undoing changes.' }
+                ]
+            },
+            'Analytics': {
+                'Phase 1: Foundation': [
+                    { t: 'Statistics 101', d: 'Mean, Median, Mode, and Standard Deviation.' },
+                    { t: 'Excel for Data', d: 'Pivot tables, VLOOKUP, and data cleaning in spreadsheets.' },
+                    { t: 'Data Collection', d: 'Understanding structured vs unstructured data.' }
+                ],
+                'Phase 2: Processing': [
+                    { t: 'Data Cleaning', d: 'Handling missing values and outliers in datasets.' },
+                    { t: 'EDA', d: 'Exploratory Data Analysis to find trends and patterns.' },
+                    { t: 'Visual Design', d: 'Principles of effective charts and storytelling.' }
+                ],
+                'Phase 3: Reporting': [
+                    { t: 'BI Tools', d: 'Creating dashboards in Power BI or Tableau.' },
+                    { t: 'Communication', d: 'Translating technical findings into business insights.' },
+                    { t: 'ML Introduction', d: 'Basics of predictive modeling and regression.' }
+                ]
+            }
+        };
+
+        const renderArea = document.getElementById('roadmap-render-area');
+        const panel = document.getElementById('details-panel');
+
+        if (fullData[topic]) {
+            Object.keys(fullData[topic]).forEach(phase => {
+                const tag = document.createElement('div');
+                tag.className = 'phase-tag';
+                tag.innerText = phase;
+                renderArea.appendChild(tag);
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'flow-wrapper';
+
+                fullData[topic][phase].forEach(node => {
+                    const nodeDiv = document.createElement('div');
+                    nodeDiv.className = 'node';
+                    nodeDiv.innerHTML = `<div class="node-box">${node.t}</div>`;
+                    
+                    nodeDiv.onclick = () => {
+                        document.getElementById('panel-title').innerText = node.t;
+                        document.getElementById('panel-desc').innerText = node.d;
+                        panel.style.display = 'block';
+
+                        // GA4 Push
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'roadmap_engagement',
+                            'skill_level': phase,
+                            'skill_name': node.t,
+                            'track_category': topic
+                        });
+                    };
+                    wrapper.appendChild(nodeDiv);
+                });
+                renderArea.appendChild(wrapper);
+            });
+        }
+    </script>
+</body>
+</html>

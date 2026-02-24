@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div style="font-weight: 800; font-size: 1.4rem;">DATA ACADEMY</div>
+        <button class="btn btn-back" onclick="window.location.href='index.html'">Logout</button>
+    </nav>
+
+    <div style="text-align: center; margin-top: 60px;">
+        <h1>Pick Your Roadmap</h1>
+        <p>Choose a track to view the detailed skill path</p>
+    </div>
+
+    <div class="grid">
+        <div class="roadmap-card" onclick="window.location.href='project.html?topic=SQL'">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">🗄️</div>
+            <h2>SQL Mastery</h2>
+            <p>Databases, Joins, & Optimization</p>
+        </div>
+        <div class="roadmap-card" onclick="window.location.href='project.html?topic=Python'">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">🐍</div>
+            <h2>Python Dev</h2>
+            <p>Logic, Pandas, & Scripting</p>
+        </div>
+        <div class="roadmap-card" onclick="window.location.href='project.html?topic=Git'">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">🌿</div>
+            <h2>Git & GitHub</h2>
+            <p>Version Control & Collaboration</p>
+        </div>
+        <div class="roadmap-card" onclick="window.location.href='project.html?topic=Analytics'">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">📊</div>
+            <h2>Data Analyst</h2>
+            <p>Statistics, EDA, & Reporting</p>
+        </div>
+    </div>
+</body>
+</html>
