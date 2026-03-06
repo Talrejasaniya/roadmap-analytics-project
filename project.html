@@ -133,12 +133,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         // GA4 Push
                         window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({
-                            'event': 'roadmap_engagement',
-                            'skill_level': phase,
-                            'skill_name': node.t,
-                            'track_category': topic
-                        });
+window.dataLayer.push({
+    event: 'roadmap_engagement',
+    skill_level: phase,
+    skill_name: node.t,
+    track_category: topic
+});
                     };
                     wrapper.appendChild(nodeDiv);
                 });

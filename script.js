@@ -16,8 +16,9 @@ function navigateToRoadmap(topicName) {
         'career_name': topicName
     });
 
+setTimeout(function(){
     window.location.href = `project.html?topic=${topicName}`;
-}
+},300);}
 
 // 2. DETAILED ROADMAP DATA (For SQL, Python, Git, Data Analysis)
 const roadmapContent = {

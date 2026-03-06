@@ -31,8 +31,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (email) {
                 // Initial GTM Push
                 window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({'event': 'user_login', 'user_email': email});
-                window.location.href = 'dashboard.html';
+window.dataLayer.push({
+    'event': 'user_login',
+    'user_email': email
+});
+
+setTimeout(function(){
+    window.location.href = 'dashboard.html';
+},300);
             }
         }
     </script>
