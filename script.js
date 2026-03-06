@@ -11,6 +11,11 @@ function pushEvent(name, params) {
 // 1. NAVIGATION & REDIRECTION LOGIC
 // Instead of a modal, we redirect users to the project page with the topic as a URL parameter
 function navigateToRoadmap(topicName) {
+
+    pushEvent('career_select', {
+        'career_name': topicName
+    });
+
     window.location.href = `project.html?topic=${topicName}`;
 }
 
