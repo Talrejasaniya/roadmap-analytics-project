@@ -29,18 +29,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function startApp() {
     const email = document.getElementById('email').value;
 
-    if (email) {
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            event: "login_start"
-        });
-
-        setTimeout(function(){
-            window.location.href = 'dashboard.html';
-        },300);
-
+    if(email.trim() === ""){
+        alert("Please enter your email");
+        return;
     }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        event: "login_start"
+    });
+
+    setTimeout(function(){
+        window.location.href = "dashboard.html";
+    },300);
 }
 </script>
 </body>
