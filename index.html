@@ -25,21 +25,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button id="start-learning-btn" class="btn btn-primary" style="width: 100%;" onclick="startApp()">Start Learning</button>
     </div>
 
-    <script>
-        function startApp() {
-            const email = document.getElementById('email').value;
-            if (btn) {
-                // Initial GTM Push
-window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "login_start"
-  });
+   <script>
+function startApp() {
+    const email = document.getElementById('email').value;
 
-setTimeout(function(){
-    window.location.href = 'dashboard.html';
-},300);
-            }
-        }
-    </script>
+    if (email) {
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: "login_start"
+        });
+
+        setTimeout(function(){
+            window.location.href = 'dashboard.html';
+        },300);
+
+    }
+}
+</script>
 </body>
 </html>
