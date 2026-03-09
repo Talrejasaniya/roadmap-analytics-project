@@ -91,9 +91,15 @@ function showDetails(title, level, category) {
     panel.style.display = 'block';
 }
 
-document.getElementById("start-learning-btn").onclick = function () {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "login_start"
-  });
-};
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("start-learning-btn");
+
+  if (btn) {
+    btn.onclick = function () {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "login_start"
+      });
+    };
+  }
+});
