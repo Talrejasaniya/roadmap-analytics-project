@@ -90,16 +90,3 @@ function showDetails(title, level, category) {
     document.getElementById('panel-desc').innerText = `This is a key part of the ${level} curriculum in ${category}. Mastery of this topic is required for progression.`;
     panel.style.display = 'block';
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("start-learning-btn");
-
-  if (btn) {
-    btn.onclick = function () {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "login_start"
-      });
-    };
-  }
-});

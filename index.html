@@ -34,7 +34,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 window.dataLayer.push({
     'event': 'user_login',
     'user_email': email
+
 });
+window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "login_start"
+  });
 
 setTimeout(function(){
     window.location.href = 'dashboard.html';
