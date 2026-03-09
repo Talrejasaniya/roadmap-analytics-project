@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>
+    let currentSkill = "";
+let currentPhase = "";
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -31,8 +34,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="details-panel">
         <h3 id="panel-title" style="margin-top: 0; color: var(--primary);"></h3>
         <p id="panel-desc"></p>
-        <button class="btn btn-primary" style="width: 100%;" onclick="this.parentElement.style.display='none'">Got it!</button>
-    </div>
+<button id="got-it-btn" class="btn btn-primary" style="width: 100%;">Got it!</button>    
+</div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
@@ -131,20 +134,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         document.getElementById('panel-desc').innerText = node.d;
                         panel.style.display = 'block';
 
+                        currentSkill = node.t;
+                        currentPhase = phase;
+
                         // GA4 Push
-                        window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
     event: 'roadmap_engagement',
     skill_level: phase,
     skill_name: node.t,
     track_category: topic
 });
+
                     };
                     wrapper.appendChild(nodeDiv);
                 });
                 renderArea.appendChild(wrapper);
             });
         }
+        document.getElementById('got-it-btn').onclick = () => {
+
+    panel.style.display = 'none';
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        event: 'got_it_click',
+        skill_name: currentSkill,
+        skill_level: currentPhase,
+        track_category: topic
+    });
+
+};
     </script>
 </body>
 </html>
